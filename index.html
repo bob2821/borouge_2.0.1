@@ -3857,6 +3857,12 @@ body:has(#app.ss-mode)>div[aria-hidden="true"][style*="z-index"]{opacity:0!impor
 /* innovation: patents removed - facts box and video re-spaced as one centred group (12px gap) */
 #app .iv .ivb{top:323px!important}
 #app .iv .vfr{top:581px!important}
+/* Projects: video removed; page 1 top row = two cards centred */
+#app .gw .vfr{display:none!important}
+/* Projects: title + key facts from client Projects.pptx under each card (Technology-style text block) */
+.gw .pc .fw{height:192px!important}
+.gw .pc h3{margin:30px 0 0!important;font-size:23px!important;font-weight:800!important;line-height:1.2!important;letter-spacing:-.005em}
+.gw .pc p{margin:9px 0 0 -50px!important;width:560px;max-width:none;font-size:15.5px!important;line-height:1.42!important;color:rgba(225,235,255,.8)!important}
 </style>
   </defs>
   <g>
@@ -5600,14 +5606,14 @@ window.BI_SITES=[[48.208, 16.374, "#FF6100", "hq"], [24.454, 54.377, "#FCD34C", 
 ;/* gw-cards: Projects as Technology-style cards on two pages - Mega projects / Other projects (images: gw_p_<id>.webp, placeholder until supplied) */
 (function(){var app=document.getElementById('app'),gw=document.querySelector('section.gw');if(!gw)return;
  var P=[[
-   ['b4','Borouge 4','Ruwais, UAE'],['kallo','Kallo PDH2','Kallo, Belgium'],['eu2','EU2','Ruwais, UAE'],['eu3','EU3','Ruwais, UAE'],['ast2','AST2','Joffre, Alberta, Canada']],[
-   ['stn','Stenungsund XLPE','Stenungsund, Sweden'],['sch','Schwechat','Schwechat, Austria'],['pe45','PE4 & PE5 revamp','Ruwais, UAE'],['dym','DYM','Cheonan, South Korea'],['h2','EU3 hydrogen extraction','Ruwais, UAE'],['ebeam','E-beam line for HMS','Burghausen, Germany']]];
- var X=[96,730,1364],Y=[262,628];
- var POS=[[[0,0],[1,0],[0,1],[1,1],[2,1]],[[0,0],[1,0],[2,0],[0,1],[1,1],[2,1]]];
+   ['borouge4','Borouge 4 – UAE','1.4 million tons polyethylene, enabled by 3G Borstar® technology<br>100 kilo tons XLPE, using Borlink® technology'],['kallo','Kallo PDH2 – Belgium','740 kilo tons of propylene capacity<br>Self-sufficiency in propylene for Belgium PP assets'],['eu2','EU2 – UAE','245 kilo tons of ethylene<br>Additional furnace boosting production capability'],['eu3','EU3 – UAE','Ethylene production increase<br>Additional furnace boosting ethylene production capability'],['ast2','AST2 – Canada','450 kilo tons of polyethylene<br>Enabled by SCLAIRTECH™ technology']],[
+   ['stn','Stenungsund – Sweden','24 kilo tons of XLPE capacity<br>Enabled by Borlink® technology'],['sch','Schwechat PP compounding – Austria','50 kilo tons of additional PP compounding capacity'],['pe45','PE4 &amp; PE5 revamp – UAE','320 kilo tons of added polyethylene capacity<br>Enabled by Borstar® technology'],['dym','DYM – South Korea','17.5 kilo tons from an additional PE compounding line<br>Enabled by Borlink®'],['h2','EU3 hydrogen extraction – UAE','78 kilo tons of hydrogen export to Taziz'],['ebeam','Burghausen E-beam line – Germany','57 kilo tons of additional PP high melt strength']]];
+ var X=[96,730,1364],Y=[284,630];
+ var POS=[[[413,0],[1047,0],[0,1],[1,1],[2,1]],[[0,0],[1,0],[2,0],[0,1],[1,1],[2,1]]];
  var W=document.createElement('div');W.className='gpj';
  W.innerHTML='<div class="gtabs"><button type="button" class="gtab act" data-p="0"><i></i>Mega projects</button><button type="button" class="gtab" data-p="1"><i></i>Other projects</button></div>';
  var pages=P.map(function(L,pi){var g=document.createElement('div');g.className='gpg';
-   g.innerHTML=L.map(function(o,i){var ps=POS[pi][i];return '<div class="pc" style="left:'+X[ps[0]]+'px;top:'+Y[ps[1]]+'px;--i:'+i+';--fd:'+(5.5+Math.random()*4).toFixed(2)+'s;--fdl:'+(-Math.random()*8).toFixed(2)+'s"><span class="fw"><span class="sf"><img alt="" src="gw_p_'+o[0]+'.webp"><span class="sh"></span><span class="ph"><b>'+o[1]+'</b>Image to follow</span><span class="hc"><i></i><i></i><i></i><i></i></span></span><span class="cs"></span><span class="beam"></span></span><h3>'+o[1]+'</h3><p>'+o[2]+'</p></div>'}).join('');
+   g.innerHTML=L.map(function(o,i){var ps=POS[pi][i];return '<div class="pc" style="left:'+(ps[0]>2?ps[0]:X[ps[0]])+'px;top:'+Y[ps[1]]+'px;--i:'+i+';--fd:'+(5.5+Math.random()*4).toFixed(2)+'s;--fdl:'+(-Math.random()*8).toFixed(2)+'s"><span class="fw"><span class="sf"><img alt="" src="gw_p_'+o[0]+'.webp"><span class="sh"></span><span class="ph"><b>'+o[1].split(' – ')[0]+'</b>Image to follow</span><span class="hc"><i></i><i></i><i></i><i></i></span></span><span class="cs"></span><span class="beam"></span></span><h3>'+o[1]+'</h3><p>'+o[2]+'</p></div>'}).join('');
    [].slice.call(g.querySelectorAll('img')).forEach(function(im){im.addEventListener('error',function(){im.closest('.pc').classList.add('noimg')})});
    W.appendChild(g);return g});
  var hd=gw.querySelector(':scope>.gh');gw.insertBefore(W,hd?hd.nextSibling:null);
